@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.dan920-dev.ltgbot</groupId>
+    <groupId>com.dan920dev.ltgbot</groupId>
     <artifactId>LTGDiscord-Bot</artifactId>
     <version>1.0-SNAPSHOT</version>
 

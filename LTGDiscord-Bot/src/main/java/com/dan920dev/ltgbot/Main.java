@@ -1,4 +1,4 @@
-package com.dan920-dev.ltgbot;
+package com.dan920dev.ltgbot;
 
 public class Main {
     public static void main(String[] args) {
