@@ -1,12 +1,15 @@
 package com.dan920dev.ltgbot;
 
+import com.dan920dev.ltgbot.listeners.EventListener;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManager;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 
+import java.util.EnumSet;
 import javax.security.auth.login.LoginException;
 
 public class LTGBot {
@@ -20,17 +23,21 @@ public class LTGBot {
         String token = config.get("TOKEN");
 
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
+
+        EnumSet<GatewayIntent> intents = EnumSet.of(
+                GatewayIntent.GUILD_MEMBERS,
+                GatewayIntent.GUILD_PRESENCES
+
+        );
+
+        builder.enableIntents(intents);
+
         builder.setStatus(OnlineStatus.ONLINE);
-        builder.setActivity(Activity.listening("listening stupid..."));
+        builder.setActivity(Activity.listening("Tilines"));
         shardManager = builder.build();
+        shardManager.addEventListener(new EventListener());
     }
 
-    public Dotenv getConfig() {
-        return config;
-    }
-    public ShardManager getShardManager(){
-        return shardManager;
-    }
     public static void main(String[] args) {
     try{
         LTGBot bot = new LTGBot();
