@@ -1,5 +1,6 @@
 package com.dan920dev.ltgbot;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManager;
@@ -11,10 +12,13 @@ import javax.security.auth.login.LoginException;
 public class LTGBot {
 
     private final ShardManager shardManager;
+    private final Dotenv config;
 
     public  LTGBot() throws LoginException{
 
-        String token = "MTEzMjA5MDc0ODE0NjI4NjY2Mg.GVuRxM.qyo3HiOmEceXSDf0ejvzbY2Xno_14zjdU0wB14";
+        config = Dotenv.configure().load();
+        String token = config.get("TOKEN");
+
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setActivity(Activity.listening("listening stupid..."));
