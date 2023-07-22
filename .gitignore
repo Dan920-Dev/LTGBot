@@ -37,5 +37,8 @@ build/
 ### Mac OS ###
 .DS_Store
 
-## other files
-!**/.env
+# other files and folders
+.idea/
+out/
+.env
+.gradle/
