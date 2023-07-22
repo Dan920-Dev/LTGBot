@@ -25,6 +25,9 @@ public class LTGBot {
         shardManager = builder.build();
     }
 
+    public Dotenv getConfig() {
+        return config;
+    }
     public ShardManager getShardManager(){
         return shardManager;
     }
